@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react"
 import { supabase } from "../supabase"
 import CodeBlock from '../components/CodeBlock'
 import HTMLPreview from '../components/HTMLPreview'
+import Sidebar from '../components/Sidebar'
 
 function ComponentViewer() {
     const { id } = useParams<{ id: string }>()
@@ -28,7 +29,11 @@ function ComponentViewer() {
     )
   
     return (
-        <div className="max-w-7xl mx-auto xl:pl-60 lg:pl-20 md:p-50 space-y-6">
+      <div className="mx-auto max-w-10xl xl:pl-60 lg:pl-20 md:p-50 flex flex-col lg:flex-row gap-15">
+        <div className="mr-5">
+          <Sidebar/>
+        </div>
+        <div className="space-y-6 ">
             <div className="space-y-2">
             <h2 className="text-3xl font-bold text-gray-900">{data.title}</h2>
             <p className="text-gray-600">{data.description}</p>
@@ -48,6 +53,7 @@ function ComponentViewer() {
                 </div>
             </div>
         </div>
+      </div>
     )
   }
   
