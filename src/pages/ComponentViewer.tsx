@@ -4,6 +4,7 @@ import { supabase } from "../supabase"
 import CodeBlock from '../components/CodeBlock'
 import HTMLPreview from '../components/HTMLPreview'
 import Sidebar from '../components/Sidebar'
+import Topbar from '../components/Topbar'
 
 function ComponentViewer() {
     const { id } = useParams<{ id: string }>()
@@ -29,31 +30,38 @@ function ComponentViewer() {
     )
   
     return (
-      <div className="mx-auto max-w-10xl xl:pl-60 lg:pl-20 md:p-50 flex flex-col lg:flex-row gap-15">
-        <div className="mr-5">
-          <Sidebar/>
+<div className="w-full overflow-x-hidden">
+  <div className="mx-auto max-w-10xl xl:pl-40 lg:pl-10 md:pl-10 md:p-30">
+    <Topbar />
+    <div className="flex flex-col lg:flex-row gap-10">
+      <div className="mr-5">
+        <Sidebar />
+      </div>
+      <div className="space-y-6 pl-5 pr-5">
+        <div className="space-y-2">
+          <h2 className="text-3xl font-bold text-gray-900">{data.title}</h2>
+          <p className="text-gray-600">{data.description}</p>
         </div>
-        <div className="space-y-6 ">
-            <div className="space-y-2">
-            <h2 className="text-3xl font-bold text-gray-900">{data.title}</h2>
-            <p className="text-gray-600">{data.description}</p>
-            </div>
-            <div className="flex flex-col lg:flex-row gap-4">
-                <div className="xl:w-[45rem] lg:w-[28rem] md:max-h-[25rem] overflow-auto">
-                    <CodeBlock code={data.html} language="html" />
-                </div>
-                <div className="xl:w-[45rem] lg:w-[28rem] md:max-h-[25rem] overflow-auto">
-                    <CodeBlock code={data.css} language="css" />
-                </div>
-            </div>
-            <div className="w-full">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">Preview</h3>
-                <div className="flex justify-start">
-                    <HTMLPreview html={data.html_example} css={data.css} />
-                </div>
-            </div>
+
+        <div className="flex flex-col lg:flex-row gap-4">
+          <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+            <CodeBlock code={data.html} language="html" />
+          </div>
+          <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+            <CodeBlock code={data.css} language="css" />
+          </div>
+        </div>
+
+        <div className="2xl:w-[70rem] xl:w-[50rem] lg:w-[40rem] md:w-[15rem] md:max-h-[25rem]">
+          <h3 className="text-xl font-semibold mb-4 text-gray-900">Preview</h3>
+          <div className="flex justify-start">
+            <HTMLPreview html={data.html_example} css={data.css} />
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
     )
   }
   

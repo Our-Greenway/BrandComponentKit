@@ -34,7 +34,7 @@ function CodeBlock({ code, language }: { code: string; language: string }) {
         </button>
       </div>
       <div className="p-4 overflow-auto text-sm font-mono">
-        <pre>
+        <pre className="overflow-auto whitespace-pre-wrap break-words">
           <code dangerouslySetInnerHTML={{ __html: highlighted }} />
         </pre>
       </div>

@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
-import { Link } from 'react-router-dom';
+import { Link, useLocation  } from 'react-router-dom';
 type BrandkitItem = {
     id: number;
     title: string;
   };
-export default function Sidebar() {
+
+function Sidebar() {
     const [items, setItems] = useState<BrandkitItem[]>([]);
+    const location = useLocation();
+
+    const isActivePath = (path: string) => location.pathname.startsWith(path);
 
   useEffect(() => {
     supabase
@@ -30,15 +34,25 @@ export default function Sidebar() {
   }
 
   return (
-<div className="pl-6 pt-6 text-sm font-medium text-gray-900">
-  <h2 className="text-base font-semibold mb-6">Nationbuilder Components</h2>
+<div className="pl-6  font-medium text-gray-900">
+  <Link to="/assets" className={isActivePath('/assets') ? 'font-bold text-black' : 'text-gray-700'}>
+    <div className={`${isActivePath('/assets') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+      Assets
+    </div>
+  </Link>
+  <Link to="/assets" className={isActivePath('/components') ? 'font-bold text-black' : 'text-gray-700 '}>
+    <div className={`${isActivePath('/components') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+      Nationbuilder Components
+    </div>
+  </Link>
   <div className="relative ml-3">
 
     {/* vine */}
     <div className="absolute top-2.5 left-3 w-1 bg-gray-400 rounded-full z-0" style={{ bottom: '1rem' }} />
 
     {items.map((item) => {
-      const isActive = location.pathname.endsWith(`/component/${item.id}`);
+      const path = `/component/${item.id}`;
+      const isActive = isActivePath(path);
       return (
         <div key={item.id} className="relative flex items-start pb-6 last:pb-0 z-10">
           {/* Dot */}
@@ -61,3 +75,4 @@ export default function Sidebar() {
 </div>
   );
 }
+export default Sidebar;
