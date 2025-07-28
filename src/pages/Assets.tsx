@@ -9,12 +9,15 @@ import Topbar from '../components/Topbar'
 function AssetViewer() {
   
     return (
-<div className="w-full overflow-x-hidden">
+
+<div className="w-full"> 
   <div className="mx-auto max-w-10xl xl:pl-40 lg:pl-10 md:pl-10 md:p-30">
     <Topbar />
     <div className="flex flex-col lg:flex-row gap-10">
-      <div className="mr-5">
-        <Sidebar />
+      <div className="lg:w-1/4">
+        <div className="sticky top-10">
+          <Sidebar />
+        </div>
       </div>
       <div className="space-y-6 pl-5 pr-5">
         <div className="space-y-2">

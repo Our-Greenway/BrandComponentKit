@@ -35,6 +35,11 @@ function Sidebar() {
 
   return (
 <div className="pl-6  font-medium text-gray-900">
+  <Link to="/brand" className={isActivePath('/brand') ? 'font-bold text-black' : 'text-gray-700'}>
+    <div className={`${isActivePath('/brand') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+      Brand
+    </div>
+    </Link>
   <Link to="/assets" className={isActivePath('/assets') ? 'font-bold text-black' : 'text-gray-700'}>
     <div className={`${isActivePath('/assets') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
       Assets
