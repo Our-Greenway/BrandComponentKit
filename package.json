@@ -1,7 +1,7 @@
 {
-  "name": "package.json",
+  "name": "Our Greenway Brand & Component Development Kit",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.9",
   "type": "module",
   "scripts": {
     "dev": "vite",

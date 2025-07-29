@@ -15,7 +15,7 @@ function Home() {
       </div>
       <div className="flex-1 space-y-6 px-4 sm:px-6">
 
-          <div className="relative w-full h-[400px]">
+          <div className="relative w-full h-[500px]">
             <img src="HomeBanner.jpg" alt="Logo sketches" className="w-full h-full object-cover rounded-xl" />
 
             <div className="absolute top-10 left-10 bg-[#3A5F3A] text-white p-6 rounded-xl max-w-xl">
