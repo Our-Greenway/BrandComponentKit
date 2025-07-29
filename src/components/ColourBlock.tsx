@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 type ColourCardProps = {
   label: string;
   hex: string;
