@@ -13,12 +13,9 @@ function ColourCard({
   cymk,
   contrast,
 }: ColourCardProps) {
-  const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(hex);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
   };
 
   return (
