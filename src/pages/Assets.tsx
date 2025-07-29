@@ -1,10 +1,7 @@
-import React from 'react';
-import { useParams } from "react-router-dom"
-import { useEffect, useState, useRef } from "react"
-import { supabase } from "../supabase"
 import FileDownload from "../components/FileDownload";
 import Sidebar from '../components/Sidebar'
 import Topbar from '../components/Topbar'
+import Footer from '../components/Footer'
 
 function AssetViewer() {
   
@@ -14,7 +11,7 @@ function AssetViewer() {
   <div className="mx-auto max-w-10xl xl:pl-40 lg:pl-10 md:pl-10 md:p-30">
     <Topbar />
     <div className="flex flex-col lg:flex-row gap-10">
-      <div className="lg:w-1/4">
+    <div className="lg:w-1/4 lg:max-w-[300px] flex-shrink-0">
         <div className="sticky top-10">
           <Sidebar />
         </div>
@@ -63,6 +60,7 @@ function AssetViewer() {
             <FileDownload fileName="OurGreenwayCWA" bgColour="#FFFFFF" header="Cycling Without Age Logo, Colour"/>
             <FileDownload fileName="OurGreenwayCWAWhite" bgColour="#3a5f3a" header="Cycling Without Age Logo, White"/>
         </div>
+        <Footer/>
       </div>
     </div>
   </div>

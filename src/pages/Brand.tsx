@@ -1,8 +1,8 @@
-import FileDownload from "../components/FileDownload";
 import Sidebar from '../components/Sidebar'
 import Topbar from '../components/Topbar'
 import { useState } from "react";
 import ColourCard from "../components/ColourBlock";
+import Footer from "../components/Footer";
 
 function Brand() {
     const [hovered, setHovered] = useState<string | null>(null);
@@ -12,7 +12,7 @@ function Brand() {
   <div className="mx-auto max-w-10xl xl:pl-40 lg:pl-10 md:pl-10 md:p-30">
     <Topbar />
     <div className="flex flex-col lg:flex-row gap-10">
-      <div className="lg:w-1/4">
+    <div className="lg:w-1/4 lg:max-w-[300px] flex-shrink-0">
         <div className="sticky top-10">
           <Sidebar />
         </div>
@@ -46,6 +46,7 @@ function Brand() {
               <g className={`transition-opacity duration-300 ${hovered === "G" ? "opacity-100" : "opacity-0"}`}>
                 <path id="G" className="fill-[#3A5F3A]" d="M171.35,26.62c-12.32-13.04-28.4-21.83-46.38-25.17-22.42-4.16-45.12.67-63.92,13.58-18.79,12.92-31.43,32.38-35.59,54.8-.72,3.92,1.1,7.87,4.56,9.85,3.66,2.1,7.5,4.29,11.3,6.46,5.89,3.35,13.2-.44,14-7.17.22-1.87.55-3.74.97-5.61,2.92-12.96,10.56-24.47,21.36-32.21,4.23-3.04,8.8-5.39,13.57-7.09.08-.04.15-.07.24-.11,4.52-1.97,9.43-3.5,12.55-4.39h0s4.7-1.42,4.7-1.42c0,0,0,0,0,0l1.92-.58h0s6.16-1.86,6.16-1.86c6-1.8,12.46,1.14,15.03,6.84,0,0,.49,1.15.97,2.25.52,1.18,1.78,1.86,3.05,1.64l34.25-6.01c1.79-.31,2.5-2.49,1.26-3.81Z"/>
                 <path id="G-2" data-name="G" className="fill-[#3A5F3A]" d="M190.07,105.96c-4.86.09-9.67-1.14-13.99-3.62-1.53-.88-2.96-1.89-4.26-3.02-1.72-1.48-4.09-1.96-6.23-1.21l-.07.02c-1.86.65-3.31,2.15-3.87,4.05-.7,2.36-1.54,4.67-2.43,6.85v45.68c1.83-1.32,3.63-2.68,5.34-4.12v13.86c0,3.46,2.8,6.26,6.26,6.26h17.69c3.46,0,6.26-2.8,6.26-6.26v-53.87c0-2.58-2.11-4.67-4.69-4.62Z"/>
+                <path id="Wave" className="fill-[#3A5F3A]" d="M159.22,109.03c-1.95,4.8-4.11,8.94-5.55,11.51-.23.52-.49,1.02-.8,1.51-3.07,4.91-9.55,14.47-18.43,23.42l-.15.15c-.28.26-6.84,6.49-15.78,11.87-8.92,5.37-19.14,8.21-29.57,8.21h-.09c-.2,0-.4,0-.6,0-1.39,0-1.65,1.98-.3,2.32,1.95.5,3.92.94,5.91,1.31,5.25.97,10.51,1.45,15.74,1.45,17.1,0,33.78-5.15,48.18-15.04.49-.34.96-.7,1.45-1.05v-45.68Z"/>
               </g>
 
               {/* Wave  */}
@@ -194,6 +195,7 @@ function Brand() {
             </a>
             </h3>
         </div>
+        <Footer/>
     </div>
     </div>
     </div>

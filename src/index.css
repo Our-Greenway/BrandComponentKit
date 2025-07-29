@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 html {
   overflow-x: hidden;
 }
@@ -70,5 +71,29 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+@media (min-width: 1024px) {
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+}
+
+
+@media (min-width: 1500px) {
+  html, body, #root {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }

@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { supabase } from "../supabase"
 import CodeBlock from '../components/CodeBlock'
 import HTMLPreview from '../components/HTMLPreview'
 import Sidebar from '../components/Sidebar'
 import Topbar from '../components/Topbar'
+import Footer from "../components/Footer"
 
 function ComponentViewer() {
     const { id } = useParams<{ id: string }>()
@@ -34,7 +35,7 @@ function ComponentViewer() {
     <div className="mx-auto max-w-10xl xl:pl-40 lg:pl-10 md:pl-10 md:p-30">
       <Topbar />
       <div className="flex flex-col lg:flex-row gap-10">
-        <div className="lg:w-1/4">
+        <div className="lg:w-1/4 lg:max-w-[300px] flex-shrink-0">
           <div className="sticky top-10">
             <Sidebar />
           </div>
@@ -59,7 +60,9 @@ function ComponentViewer() {
           <div className="flex justify-start">
             <HTMLPreview html={data.html_example} css={data.css} />
           </div>
+          <Footer/>
         </div>
+        
       </div>
     </div>
   </div>
