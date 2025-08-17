@@ -152,6 +152,7 @@ function Nationbuilder() {
 
   const htmlStarter = `<div class="inner-block">
     <div style="position: relative; width: 100%; max-width: 1000px; margin: auto;">
+        <!-- HTML Code -->
     </div>
   </div>`
 
@@ -179,7 +180,7 @@ function Nationbuilder() {
             <CodeBlock code={htmlStarter} language="html" />
           </div>
           <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
-            <CodeBlock code={boilerplate} language="css" canHighlight={false} />
+            <CodeBlock code={boilerplate} language="css"/>
           </div>
         </div>
         

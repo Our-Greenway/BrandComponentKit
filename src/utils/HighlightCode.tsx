@@ -17,11 +17,9 @@ function highlightCode(code: string, lang: string): string {
   if (lang === 'css') {
     const highlighted = code
       .replace(/(\/\*.*?\*\/)/gs, `<span class="text-gray-500">$1</span>`)
-      .replace(/(@import\s+[^;]+;?)/g, `<span class="text-purple-400">$1</span>`)
-      .replace(/(@media[^{]*\{)/g, `<span class="text-purple-400">$1</span>`)
-      .replace(/(".*?"|'.*?')/g, `<span class="text-green-400">$1</span>`)
-      .replace(/([a-zA-Z-]+)(\s*:)/g, `<span class="text-cyan-300">$1</span>$2`)
-      .replace(/([.#][a-zA-Z_-][a-zA-Z0-9_-]*)/g, `<span class="text-yellow-300">$1</span>`)
+      .replace(/(@import\s+[^;]+;)/g, `<span class="text-purple-400">$1</span>`)
+      .replace(/(@media\s*\([^)]+\)\s*\{)/g, `<span class="text-purple-400">$1</span>`)
+      .replace(/(<\/styles>|<styles>)/g, `<span class="text-red-300">$1</span>`)
       .replace(/(\{|\})/g, `<span class="text-yellow-400">$1</span>`)
       .replace(/(;)/g, `<span class="text-white">$1</span>`);
       
