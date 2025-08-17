@@ -4,6 +4,7 @@ import AssetViewer from './pages/Assets'
 import Brand from './pages/Brand'
 import Home from './pages/Home'
 import Nationbuilder from './pages/Nationbuilder'
+import Scrape2TeX from './pages/Scrape2TeX'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/component/:id" element={<ComponentViewer />} />
       <Route path="/brand" element={<Brand />} />  
       <Route path="/nationbuilder" element={<Nationbuilder />} />
+      <Route path="/scrape2tex" element={<Scrape2TeX />} />
       </Routes>
     </BrowserRouter>
   )

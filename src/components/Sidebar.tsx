@@ -45,6 +45,12 @@ function Sidebar() {
       Assets
     </div>
   </Link>
+
+  <Link to="/scrape2tex" className={isActivePath('/scrape2tex') ? 'font-bold text-black' : 'text-gray-700 '}>
+    <div className={`${isActivePath('/scrape2tex') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+      Scrape2TeX
+    </div>
+  </Link>
   <Link to="/nationbuilder" className={isActivePath('/nationbuilder') ? 'font-bold text-black' : 'text-gray-700 '}>
     <div className={`${isActivePath('/nationbuilder') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
       Nationbuilder Components
@@ -76,6 +82,7 @@ function Sidebar() {
         </div>
       );
     })}
+    
   </div>
 </div>
   );
