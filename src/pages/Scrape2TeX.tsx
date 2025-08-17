@@ -29,7 +29,13 @@ function Scrape2TeX() {
             <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> (Other IDEs may work but it is mainly built for VSCode)</li>
             <li><a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop">LaTeX Workshop Visual Studio Code</a></li>
           </ul>
-          <p className="text-gray-600">To use this tool, go to the GitHub Page and click the green code button. Either download the ZIP, import it via GitHub desktop, or clone with any other .git software.</p>
+          <p className="text-gray-600">To use this tool, go to the <a href="https://github.com/Our-Greenway/scrape2TeX">GitHub project page</a> and click the green code button. Either download the ZIP, import it via GitHub desktop, or clone with any other .git software.</p>
+          <h3 className="pt-2">
+            <a href="hhttps://github.com/Our-Greenway/scrape2TeX" className="bg-gray-300 hover:bg-gray-400 text-lg font-medium px-6 py-2 rounded transition">
+            <strong className="text-black">Go to the Github project page</strong>
+            </a>
+            </h3>
+          <br/>
           <img src="Scrape2TeX1.png"></img>
           <p className="text-gray-600"> Once you got it installed, install required packages using </p>
           <div className="flex flex-col lg:flex-row gap-4">
@@ -39,7 +45,7 @@ function Scrape2TeX() {
           </div>
           
           <p>Then, follow the instructions in this video below.</p>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/zX78W-SeGRs?si=Ivghw2PWrn-EfXe7" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/zX78W-SeGRs?si=Ivghw2PWrn-EfXe7" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
           <p className="text-gray-600"> The commands templates are attached below:</p>
       </div>
 
