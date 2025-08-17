@@ -1,9 +1,22 @@
 import { useState } from "react"
 import highlightCode from "../utils/HighlightCode"
 
-function CodeBlock({ code, language }: { code: string; language: string }) {
+type CodeBlockProps = {
+  code: string
+  language: string
+  canHighlight?: boolean
+}
+
+function CodeBlock({ code, language, canHighlight = true }: CodeBlockProps) {
   const [copied, setCopied] = useState(false)
-  const highlighted = highlightCode(code, language)
+  if (canHighlight){}
+
+  var highlighted = code;
+
+  if (canHighlight){
+    highlighted = highlightCode(code, language)
+  } 
+
 
   const copyToClipboard = async () => {
     try {
@@ -35,7 +48,11 @@ function CodeBlock({ code, language }: { code: string; language: string }) {
       </div>
       <div className="p-4 overflow-auto text-sm font-mono">
         <pre className="overflow-auto whitespace-pre-wrap break-words">
-          <code dangerouslySetInnerHTML={{ __html: highlighted }} />
+          {canHighlight ? (
+            <code dangerouslySetInnerHTML={{ __html: highlighted }} />
+          ) : (
+            <code className="text-white">{code}</code>
+          )}
         </pre>
       </div>
     </div>

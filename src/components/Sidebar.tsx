@@ -45,8 +45,8 @@ function Sidebar() {
       Assets
     </div>
   </Link>
-  <Link to="/assets" className={isActivePath('/components') ? 'font-bold text-black' : 'text-gray-700 '}>
-    <div className={`${isActivePath('/components') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+  <Link to="/nationbuilder" className={isActivePath('/nationbuilder') ? 'font-bold text-black' : 'text-gray-700 '}>
+    <div className={`${isActivePath('/nationbuilder') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
       Nationbuilder Components
     </div>
   </Link>
