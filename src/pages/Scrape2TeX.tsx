@@ -21,7 +21,7 @@ function Scrape2TeX() {
         <div className="space-y-2">
           <h2 className="text-3xl font-bold text-gray-900">Scrape2TeX</h2>
           <p className="text-gray-600">Scrape2TeX is a Python to TeX based tool to automate the conversion of legacy research papers hosted on OurGreenway.ca to a mostly PDF printable format. </p>
-          <h3 className="text-2xl font-bold text-gray-900">Prequisite tools</h3>
+          <h3 className="text-2xl font-bold text-gray-900">Prerequisite tools</h3>
           <p className="text-gray-600">This tool requires</p>
           <ul className="list-disc pl-6">
             <li><a href="https://www.latex-project.org/get/">LaTeX (which includes XeLaTeX)</a></li>
