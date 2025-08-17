@@ -15,32 +15,17 @@ function highlightCode(code: string, lang: string): string {
   }
   
   if (lang === 'css') {
-    let result = code;
-    
-    result = result.replace(/(\/\*.*?\*\/)/gs, `<span class="text-gray-500">$1</span>`);
-    
-    result = result.replace(/(@[\w-]+)/g, (match, atRule, offset) => {
-      const beforeMatch = code.substring(0, offset);
-      const openComment = beforeMatch.lastIndexOf('/*');
-      const closeComment = beforeMatch.lastIndexOf('*/');
+    const highlighted = code
+      .replace(/(\/\*.*?\*\/)/gs, `<span class="text-gray-500">$1</span>`)
+      .replace(/(@import\s+[^;]+;?)/g, `<span class="text-purple-400">$1</span>`)
+      .replace(/(@media[^{]*\{)/g, `<span class="text-purple-400">$1</span>`)
+      .replace(/(".*?"|'.*?')/g, `<span class="text-green-400">$1</span>`)
+      .replace(/([a-zA-Z-]+)(\s*:)/g, `<span class="text-cyan-300">$1</span>$2`)
+      .replace(/([.#][a-zA-Z_-][a-zA-Z0-9_-]*)/g, `<span class="text-yellow-300">$1</span>`)
+      .replace(/(\{|\})/g, `<span class="text-yellow-400">$1</span>`)
+      .replace(/(;)/g, `<span class="text-white">$1</span>`);
       
-      if (openComment > closeComment) {
-        return match;
-      }
-      return `<span class="text-purple-400">${atRule}</span>`;
-    });
-    
-    result = result.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, `<span class="text-green-400">$1</span>`);
-    
-    result = result.replace(/([a-zA-Z-]+)(\s*:)/g, `<span class="text-cyan-300">$1</span>$2`);
-    
-    result = result.replace(/([.#][a-zA-Z_-][a-zA-Z0-9_-]*)/g, `<span class="text-yellow-300">$1</span>`);
-    
-    result = result.replace(/(\{|\})/g, `<span class="text-yellow-400">$1</span>`);
-    
-    result = result.replace(/(;)/g, `<span class="text-white">$1</span>`);
-      
-    return `<pre class="text-white font-mono whitespace-pre">${result}</pre>`;
+    return `<pre class="text-white font-mono whitespace-pre">${highlighted}</pre>`;
   }
 
   return `<pre class="text-white font-mono whitespace-pre">${code}</pre>`;
