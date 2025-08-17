@@ -13,13 +13,55 @@ function highlightCode(code: string, lang: string): string {
         });
     return `<pre class="text-white font-mono whitespace-pre">${highlighted}</pre>`;
   }
+  
   if (lang === 'css') {
-    const highlighted = code
+    let highlighted = code
       .replace(/(\/\*.*?\*\/)/gs, `<span class="text-gray-500">$1</span>`)
-      .replace(/(@import\s+)/g, `<span class="text-gray-400">$1</span>`)
-      .replace(/(".*?"|'.*?')/g, `<span class="text-cyan-300">$1</span>`)
-      .replace(/(;)/g, `<span class="text-white">$1</span>`)
-      .replace(/(\{|\})/g, `<span class="text-yellow-400">$1</span>`);
+      .replace(/(@[\w-]+)/g, (match, atRule, offset) => {
+        const beforeMatch = code.substring(0, offset);
+        const openComment = beforeMatch.lastIndexOf('/*');
+        const closeComment = beforeMatch.lastIndexOf('*/');
+        
+        if (openComment > closeComment) {
+          return match;
+        }
+        return `<span class="text-purple-400">${atRule}</span>`;
+      })
+      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, (match, str, offset) => {
+        const beforeMatch = highlighted.substring(0, offset);
+        if (beforeMatch.includes('<span class="text-gray-500">') && 
+            !beforeMatch.includes('</span>')) {
+          return match;
+        }
+        return `<span class="text-green-400">${str}</span>`;
+      })
+      .replace(/([a-zA-Z-]+)(\s*:)/g, (match, prop, colon, offset) => {
+        const beforeMatch = highlighted.substring(0, offset);
+        const inComment = beforeMatch.includes('<span class="text-gray-500">') && 
+                         !beforeMatch.includes('</span>');
+        const inString = beforeMatch.includes('<span class="text-green-400">') && 
+                        !beforeMatch.includes('</span>');
+        
+        if (inComment || inString) {
+          return match;
+        }
+        return `<span class="text-cyan-300">${prop}</span>${colon}`;
+      })
+      .replace(/([.#][a-zA-Z_-][a-zA-Z0-9_-]*)/g, (match, selector, offset) => {
+        const beforeMatch = highlighted.substring(0, offset);
+        const inComment = beforeMatch.includes('<span class="text-gray-500">') && 
+                         !beforeMatch.includes('</span>');
+        const inString = beforeMatch.includes('<span class="text-green-400">') && 
+                        !beforeMatch.includes('</span>');
+        
+        if (inComment || inString) {
+          return match;
+        }
+        return `<span class="text-yellow-300">${selector}</span>`;
+      })
+      .replace(/(\{|\})/g, `<span class="text-yellow-400">$1</span>`)
+      .replace(/(;)/g, `<span class="text-white">$1</span>`);
+      
     return `<pre class="text-white font-mono whitespace-pre">${highlighted}</pre>`;
   }
 
