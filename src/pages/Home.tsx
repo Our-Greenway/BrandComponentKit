@@ -33,7 +33,7 @@ function Home() {
               <div className="flex flex-col md:flex-row gap-4">
                 <ImageButton image="LogoDevelopment.jpg" bgColour= "#3A5F3A" name= "Brand" link="/brand"/>
                 <ImageButton image="WingBackground.svg" bgColour= "#212121" name= "Assets" link="/assets"/>
-                <ImageButton image="NationbuilderCover.jpg" bgColour= "#007ACC" name= "Nationbuilder Components" link="/assets"/>
+                <ImageButton image="NationbuilderCover.jpg" bgColour= "#007ACC" name= "Nationbuilder Components" link="/nationbuilder"/>
               </div>
             </div>
         </div>
