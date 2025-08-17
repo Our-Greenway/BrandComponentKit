@@ -1,8 +1,4 @@
-import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
-import { supabase } from "../supabase"
 import CodeBlock from '../components/CodeBlock'
-import HTMLPreview from '../components/HTMLPreview'
 import Sidebar from '../components/Sidebar'
 import Topbar from '../components/Topbar'
 import Footer from "../components/Footer"
@@ -194,6 +190,8 @@ function Nationbuilder() {
           <img src="SourceCode2.png"></img>
           <p>Copy what you see here in the HTML portion. Feel free to extract other tools from this kit. <b>Place anything labeled "HTML" in the div part; anything labeled "CSS" should be between a styles tag.</b></p>
         </div>
+
+        <Footer/>
 
       </div>
     </div>
