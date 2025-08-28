@@ -54,6 +54,13 @@ function ComponentViewer() {
             <CodeBlock code={data.css} language="css" />
           </div>
         </div>
+        {data.js && (
+        <div className="flex flex-col lg:flex-row gap-4">
+          <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+            <CodeBlock code={data.js} language="js" />
+          </div>
+        </div>
+        )}
 
         <div className="2xl:w-[70rem] xl:w-[50rem] lg:w-[40rem] md:w-[15rem] md:max-h-[25rem]">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Preview</h3>
