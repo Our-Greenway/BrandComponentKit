@@ -40,7 +40,7 @@ function FlightPath() {
       <div className="space-y-6 pl-5 pr-5">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold text-gray-900">FlightPath Downsview</h2>
-          <p className="text-gray-600">Flightpath Downsview is a TypeScript React tool designed to help people who are hearing impaired learn more about Downsview Park during Cycling Without Age rides (the “Navigator” feature). It also includes a “Pathfinder” tool to guide users along the shortest routes between park attractions.</p>
+          <p className="text-gray-600">FlightPath Downsview is a TypeScript React tool designed to help people who are hearing impaired learn more about Downsview Park during Cycling Without Age rides (the “Navigator” feature). It also includes a “Pathfinder” tool to guide users along the shortest routes between park attractions.</p>
           <h3 className="pt-2">
             <a href="https://flightpath.ourgreenway.ca/" className="bg-gray-300 hover:bg-gray-400 text-lg font-medium px-6 py-2 rounded transition">
             <strong className="text-black">Go to the website</strong>
@@ -97,7 +97,193 @@ function FlightPath() {
             <li><strong>3. </strong> Once previous node is null, return the array representing the shortest path from start to end </li>
           </ul>
 
-          
+
+          <p>To trigger the pathfinder algorithm, it is controlled in the <code>src/pages/Pathfinder.tsx</code> page.</p>
+            <ul className="list-disc pl-6">
+            <li><strong>1. </strong>Users select the start and end locations from dropdown menus, populated from all available nodes (attractions or points of interest) in the park.</li>
+            <li><strong>2. </strong>Whenever a selection changes, the app checks if both a start and end node are chosen, and whether the same query was already processed (cached in const <code>lastProcessedRef</code>), to avoid redundant calculations.</li>
+            <li><strong>3. </strong>When both nodes are set and it’s a new query, the app automatically triggers the path-finding logic by calling <code>findPath(start, end)</code>, which runs Dijkstra’s algorithm behind the scenes. The UI shows a loading spinner while the calculation is in progress.</li>
+            <li><strong>4. </strong>Once a path is found, the result (path and distance) is saved in shared context so it can be displayed in the Pathfinder UI and on the map. The route is shown as a list of nodes (e.g. <code>MiniMound to Playground</code>) and the total distance is displayed.</li>
+        </ul>
+
+
+        <h2 className="text-3xl font-bold text-gray-900">Navigation</h2>
+        <p>All navigation state (user position, nearest polygon, distance, inside/outside status) is managed centrally by the MapContext defined in <code>/src/context/MapContext</code>, so it can be accessed from any component, such as map overlays, info cards, or directions panels. The properties of this context are:</p>
+        <ul className="list-disc pl-6">
+            <li>
+                <code>userPoint: Coordinates | null</code> : The user’s current GPS coordinates as a pair <code>[longitude, latitude]</code>, or <code>null</code> if unavailable.
+            </li>
+            <li>
+                <code>nearestPolygon: Feature&lt;Polygon | MultiPolygon&gt; | null</code>: The GeoJSON polygon (park area) closest to the user, or <code>null</code> if not calculated yet.
+            </li>
+            <li>
+                <code>distance: number | null</code>: The distance (in kilometers) from the user’s location to the nearest polygon, or <code>null</code> if not determined.
+            </li>
+            <li>
+                <code>isInside: boolean | null</code>: Whether the user’s location is inside the nearest polygon. <code>true</code> for inside, <code>false</code> for outside, <code>null</code> if not checked.
+            </li>
+            <li>
+                <code>isLoading: boolean</code>: Indicates if the map and context data are still loading.
+            </li>
+            <li>
+                <code>currentPolygonData: &#123; id, heroImage, description &#125; | null</code>: Metadata (ID, image, description) for the current/nearest polygon, or <code>null</code> if not available.
+            </li>
+            <li>
+                <code>pathFinder: PathFinderState</code>: Contains all current state for the pathfinding feature (active state, start/end nodes, computed path, and distance).
+            </li>
+            <li>
+                <code>savedPathFinder: PathFinderState | null</code>: A backup of the most recently saved pathfinding state, for easy undo/restore.
+            </li>
+            <li>
+                <code>allPolygons: Feature&lt;Polygon | MultiPolygon&gt;[]</code>: Array of all attraction polygons loaded from GeoJSON files.
+            </li>
+            <li>
+                <code>allPaths: Record&lt;string, Feature&lt;LineString&gt;[]&gt;</code>: Object mapping path names (e.g. <code>"KeeleWycombe_to_NorthFarm"</code>) to arrays of path features (edges) loaded from GeoJSON.
+            </li>
+        </ul>
+        <p>With these methods:</p>
+        <ul className="list-disc pl-6">
+        <li>
+            <code>setUserPoint(pt: Coordinates)</code>: Updates the user’s current GPS position on the map.
+        </li>
+        <li>
+            <code>setNearestPolygon(f: Feature&lt;Polygon | MultiPolygon&gt;)</code>: Sets the nearest attraction area (polygon) to the user’s current location.
+        </li>
+        <li>
+            <code>setPathFinderActive(active: boolean)</code>: Enables or disables the Pathfinder tool’s active state (useful for toggling UI or logic).
+        </li>
+        <li>
+            <code>setPathFinderResult(result: &#123; startNode, endNode, pathNodes, distance &#125;)</code>: Saves the results of a pathfinding request, including the nodes visited and the total distance.
+        </li>
+        <li>
+            <code>clearPathFinder()</code>: Resets and clears all Pathfinder state, including start/end nodes and path results.
+        </li>
+        <li>
+            <code>savePathFinder()</code>: Temporarily stores the current Pathfinder state, so users can restore it later.
+        </li>
+        <li>
+            <code>restorePathFinder()</code>: Recovers and reapplies the previously saved Pathfinder state.
+        </li>
+        </ul>
+
+
+
+        <p>This navigation feature works like this:</p>
+            <ul className="list-disc pl-6">
+            <li><strong>1. </strong>When the app loads, it requests the user’s live location using the browser’s geolocation API (through Turf.js' watch with enableHighAccuracy set as true) and saves their position as a coordinate pair.</li>
+            <li><strong>2. </strong>The app loads all attraction areas (polygons) and pathways (edges) from GeoJSON files in <code>/geojson/</code> and <code>/geojson/paths/</code> into context.</li>
+            <li><strong>3. </strong>Every time the user’s location updates, the app calculates the closest park attraction (polygon) to the user using Turf.js' polygonToLine method.</li>
+            <li><strong>4. </strong>The distance from the user to the nearest polygon is measured and recorded in the MapContext's distance, nearestPolygon property. isInside will be set to true if it is inside a polygon, and isLoading will be set to false when it is done. </li>
+            </ul>
+
+        <p>The user interface of the navigation tool is controlled by the <code>/src/pages/InfoPanel.tsx</code> component. It switches between:</p>
+            <ul className="list-disc pl-6">
+            <li> <code>/src/pages/ApproachingPanel</code> when <code>isInside</code> is false </li>
+            <li> <code>/src/pages/InsidePanel</code> when <code>isInside</code> is true </li>
+            </ul>
+        <p>The ApproachingPanel calls for the distance and nearestPolygon. The InsidePanel calls for nearestPolygon, as well as a Supabase PostgreSQL database. </p>
+
+        <h3 className="text-2xl text-gray-900">Park Attraction SQL Database</h3>
+        <p>The name of the park attraction is sent (e.g. <code>MiniMound</code>) and it selects all of the rows in the database at the <code>location</code> column.</p>
+        <p>This database is structured like:</p>
+        <div className="overflow-x-auto">
+    <table className="min-w-full border-collapse border border-gray-300">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="border border-gray-300 px-4 py-2 text-left">Column</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">Type</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">Constraints</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">Default</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2"><code>id</code></td>
+          <td className="border border-gray-300 px-4 py-2">bigint</td>
+          <td className="border border-gray-300 px-4 py-2">Primary Key, Auto-increment</td>
+          <td className="border border-gray-300 px-4 py-2">Generated identity</td>
+          <td className="border border-gray-300 px-4 py-2">Unique identifier</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2"><code>location</code></td>
+          <td className="border border-gray-300 px-4 py-2">text</td>
+          <td className="border border-gray-300 px-4 py-2">NOT NULL</td>
+          <td className="border border-gray-300 px-4 py-2">-</td>
+          <td className="border border-gray-300 px-4 py-2">Park attraction name (e.g. MiniMound, NorthFarm)</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2"><code>feature</code></td>
+          <td className="border border-gray-300 px-4 py-2">text</td>
+          <td className="border border-gray-300 px-4 py-2">NOT NULL</td>
+          <td className="border border-gray-300 px-4 py-2">'' (empty string)</td>
+          <td className="border border-gray-300 px-4 py-2">Description of the location's features</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2"><code>created_at</code></td>
+          <td className="border border-gray-300 px-4 py-2">timestamp with time zone</td>
+          <td className="border border-gray-300 px-4 py-2">NOT NULL</td>
+          <td className="border border-gray-300 px-4 py-2">now()</td>
+          <td className="border border-gray-300 px-4 py-2">Record creation timestamp</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2"><code>image</code></td>
+          <td className="border border-gray-300 px-4 py-2">text</td>
+          <td className="border border-gray-300 px-4 py-2">NULL</td>
+          <td className="border border-gray-300 px-4 py-2">null</td>
+          <td className="border border-gray-300 px-4 py-2">Optional image URL or file path</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2"><code>bg_colour</code></td>
+          <td className="border border-gray-300 px-4 py-2">text</td>
+          <td className="border border-gray-300 px-4 py-2">NULL</td>
+          <td className="border border-gray-300 px-4 py-2">null</td>
+          <td className="border border-gray-300 px-4 py-2">Optional background color for UI theming</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<p>For example, if we try to input <code>MiniMound</code> as our location, it returns:</p>
+  <div className="overflow-x-auto">
+    <table className="min-w-full border-collapse border border-gray-300">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="border border-gray-300 px-4 py-2 text-left">location</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">created_at</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">feature</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">image</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">bg-colour</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">MiniMound</td>
+          <td className="border border-gray-300 px-4 py-2">2025-08-24 19:09:28.304071+00</td>
+          <td className="border border-gray-300 px-4 py-2">Man-made mound from lake construction soil</td>
+          <td className="border border-gray-300 px-4 py-2">/icons/Soil.svg</td>
+          <td className="border border-gray-300 px-4 py-2">fff0de</td>
+          <td className="border border-gray-300 px-4 py-2">7</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">MiniMound</td>
+          <td className="border border-gray-300 px-4 py-2">2025-08-24 19:11:04.65524+00</td>
+          <td className="border border-gray-300 px-4 py-2">360° views of all three park ponds/lake, popular photo spot</td>
+          <td className="border border-gray-300 px-4 py-2">/icons/Camera.svg</td>
+          <td className="border border-gray-300 px-4 py-2"></td>
+          <td className="border border-gray-300 px-4 py-2">8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>These values are then fed to <code>/src/components/Description.tsx</code>, which is a label that has an icon on the left and a description of something on the right. </p>
+    <p>Device orientation is determined by the <code>getOrientation</code> hook with event listeners found in <code>src/context/Orientation.tsx</code>. <code>getOrientation() = 'portrait'</code> means the device is in portrait mode, likewise if <code>getOrientation() = 'landscape'</code>, it is in landscape mode. </p>
+              
+          <h3 className="pt-3 text-2xl font-bold text-gray-900">QGIS Maintenance</h3>
+          <p>The GeoJSONs are maintained mainly by QGIS. Adjustments can be made in the .qgz and .qgs files in the <code>/qgis</code> root folder, and can exported as <code>/qgis/QGISexport.py</code> in QGIS' Python console. Ensure that these polygons are GeoJSONs; ESRI Shapefiles are not supported. Ensure that the length parameter are in metres, not in decimal degrees (CRS84). Use the Python script found in <code>/qgis/degToMeter.py</code> to convert it to the <code>degree</code> parameter.</p>
+
               </div>
 
               <Footer/>
