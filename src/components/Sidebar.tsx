@@ -51,6 +51,12 @@ function Sidebar() {
       Scrape2TeX
     </div>
   </Link>
+
+  <Link to="/flightpath" className={isActivePath('/flightpath') ? 'font-bold text-black' : 'text-gray-700'}>
+    <div className={`${isActivePath('/flightpath') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+      FlightPath Downsview
+    </div>
+  </Link>
   <Link to="/nationbuilder" className={isActivePath('/nationbuilder') ? 'font-bold text-black' : 'text-gray-700 '}>
     <div className={`${isActivePath('/nationbuilder') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
       Nationbuilder Components
