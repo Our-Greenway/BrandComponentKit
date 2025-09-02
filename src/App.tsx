@@ -5,6 +5,7 @@ import Brand from './pages/Brand'
 import Home from './pages/Home'
 import Nationbuilder from './pages/Nationbuilder'
 import Scrape2TeX from './pages/Scrape2TeX'
+import FlightPath from './pages/Flightpath'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/brand" element={<Brand />} />  
       <Route path="/nationbuilder" element={<Nationbuilder />} />
       <Route path="/scrape2tex" element={<Scrape2TeX />} />
+      <Route path="/flightpath" element={<FlightPath />} />
       </Routes>
     </BrowserRouter>
   )
