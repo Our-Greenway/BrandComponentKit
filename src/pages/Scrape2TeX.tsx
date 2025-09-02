@@ -31,7 +31,7 @@ function Scrape2TeX() {
           </ul>
           <p className="text-gray-600">To use this tool, go to the <a href="https://github.com/Our-Greenway/scrape2TeX">GitHub project page</a> and click the green code button. Either download the ZIP, import it via GitHub desktop, or clone with any other .git software.</p>
           <h3 className="pt-2">
-            <a href="hhttps://github.com/Our-Greenway/scrape2TeX" className="bg-gray-300 hover:bg-gray-400 text-lg font-medium px-6 py-2 rounded transition">
+            <a href="https://github.com/Our-Greenway/scrape2TeX" className="bg-gray-300 hover:bg-gray-400 text-lg font-medium px-6 py-2 rounded transition">
             <strong className="text-black">Go to the Github project page</strong>
             </a>
             </h3>
