@@ -17,7 +17,7 @@ function Scrape2TeX() {
             <Sidebar />
           </div>
         </div>
-      <div className="space-y-6 pl-5 pr-5">
+        <div className="space-y-6 w-screen sm:w-auto pl-5 pr-5 break-words whitespace-normal">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold text-gray-900">Scrape2TeX</h2>
           <p className="text-gray-600">Scrape2TeX is a Python to TeX based tool to automate the conversion of legacy research papers hosted on OurGreenway.ca to a mostly PDF printable format. </p>

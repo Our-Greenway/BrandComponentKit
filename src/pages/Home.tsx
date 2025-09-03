@@ -13,12 +13,12 @@ function Home() {
           <Sidebar />
         </div>
       </div>
-      <div className="flex-1 space-y-6 px-4 sm:px-6">
+      <div className="flex-1 space-y-6 px-4  w-screen sm:w-auto sm:px-6">
 
-          <div className="relative w-full h-[500px]">
+          <div className="relative h-[500px]">
             <img src="HomeBanner.jpg" alt="Logo sketches" className="w-full h-full object-cover rounded-xl" />
 
-            <div className="absolute top-10 left-10 bg-[#3A5F3A] text-white p-6 rounded-xl max-w-xl">
+            <div className="absolute top-10 left-0 sm:left-10 bg-[#3A5F3A] text-white p-6 rounded-xl max-w-xl">
               <p className="text-3xl font-semibold">
                 Guiding the Look, Feel, and Future of
               </p>

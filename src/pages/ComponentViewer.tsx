@@ -40,7 +40,7 @@ function ComponentViewer() {
             <Sidebar />
           </div>
         </div>
-      <div className="space-y-6 pl-5 pr-5">
+        <div className="space-y-6 w-screen sm:w-auto pl-5 pr-5 break-words whitespace-normal">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold text-gray-900">{data.title}</h2>
           <p className="text-gray-600">{data.description}</p>
