@@ -11,7 +11,7 @@ body{
   body{
     background: #fcfcfc;
   }
-  p {
+  p, li, ul {
     color: #213547;
   }
 }
