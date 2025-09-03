@@ -189,12 +189,72 @@ function Brand() {
         <div className="space-y-2">
           <h2 className="text-3xl font-bold text-gray-900">Typeface</h2>
           <h2 className="text-2xl text-gray-900">DM Sans</h2>
-          <p>This font will be used for both headings and paragraph usecases. It is licensed under <a href="https://openfontlicense.org/open-font-license-official-text/">SIL Open Font License</a>. For Adobe Illustrator usecases, set tracking to -25.</p>       
+          <p>This font will be used for both headings and paragraph usecases. It is licensed under <a href="https://openfontlicense.org/open-font-license-official-text/">SIL Open Font License</a>. For Adobe Illustrator usecases, set tracking to -25. <strong>Additionally, DM Sans when converted to SVG should have a high decimal point number (e.g. 4-5) to avoid text issues.</strong> Lower decimal precision causes rounding errors, distorting the shape, especially at small sizes or for fonts with subtle curves. High decimal numbers will reduce the amount of weird artifacts or rough edges.</p>       
           <h3 className="pt-2">
             <a href="https://fonts.google.com/specimen/DM+Sans" className="bg-gray-300 hover:bg-gray-400 text-lg font-medium px-6 py-2 rounded transition">
             <strong className="text-black">Download this font on Google Fonts</strong>
             </a>
             </h3>
+</div>
+<div className="space-y-2">
+            <h2 className="text-3xl font-bold text-gray-900 ">Brand Guidelines</h2>
+          <h2 className="text-2xl text-gray-900">Logo spacing</h2>
+            <img src="SpacingSheet.svg"></img>
+            <p>This diagram above shows how much space should be left around the “Our Greenway” logo to keep it looking clean and easy to read. The amount of space is based on the width of the wing element <strong>(labeled as X)</strong>, with the ideal clear space being X on all sides. At minimum, you should keep at least half that distance <strong>(1/2X)</strong> around the logo, measured from the furthest edge of any part of the design (including descenders or the logomark). Following these spacing rules helps make sure the logo always stands out and isn’t crowded by other stuff, so it always looks sharp and professional wherever it appears.</p>
+            <div className="pt-3 pb-3">
+
+          <h2 className="text-2xl text-gray-900">Logo rules</h2>
+            <div className="pt-4 flex flex-col lg:flex-row gap-4">
+              
+            <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/Advisory.svg"  />
+                <p className="pt-2 pb-2"><strong>Use secondary logos only after the combination mark appears.</strong> Avoid using secondary logos as standalone primary branding.</p>
+              </div>
+
+              <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/DoNot1.svg"  />
+                <p className="pt-2 pb-2"><strong>Do not change or modify the logo's colours.</strong></p>
+              </div>
+            </div>
+</div>
+
+            <div className="flex flex-col lg:flex-row gap-4">
+              <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/DoNot2.svg"  />
+                <p className="pt-2 pb-2"><strong>Do not stretch or skew the logo.</strong> Uniformly expand the logo by holding the "shift" key.</p>
+              </div>
+              <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/DoNot4.svg"  />
+                <p className="pt-2 pb-2"><strong>Do not add effects to the logo.</strong></p>
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row gap-4">
+              <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/DoNot5.svg"  />
+                <p className="pt-2 pb-2"><strong>Do not rotate the logo.</strong></p>
+              </div>
+              <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/DoNot6.svg"  />
+                <p className="pt-2 pb-2"><strong>Do not place the logo on a background that reduces legibility.</strong> Please use the white logo, or adjust the design to place the logo somewhere else.</p>
+              </div>
+            </div>
+
+
+            <div className="flex flex-col lg:flex-row gap-4">
+              <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/DoNot7.svg"  />
+                <p className="pt-2 pb-2"><strong>Do not adjust elements inside the logo.</strong></p>
+              </div>
+              <div className="2xl:w-[35rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] md:max-h-[25rem] overflow-auto">
+                <img src="/DoNotDo/DoNot3.svg"  />
+
+                <p className="pt-2 pb-2"><strong>Do not combine elements from the old logo with the new one.</strong></p>
+                
+                </div>
+            </div>
+        
+        
         </div>
         <Footer/>
     </div>
