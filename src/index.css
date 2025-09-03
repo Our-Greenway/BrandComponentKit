@@ -11,6 +11,9 @@ body{
   body{
     background: #fcfcfc;
   }
+  p {
+    color: #213547;
+  }
 }
 
 :root {
