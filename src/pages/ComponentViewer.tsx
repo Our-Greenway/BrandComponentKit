@@ -65,7 +65,7 @@ function ComponentViewer() {
         <div className="2xl:w-[70rem] xl:w-[50rem] lg:w-[40rem] md:w-[15rem] md:max-h-[25rem]">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Preview</h3>
           <div className="flex justify-start">
-            <HTMLPreview html={data.html_example} css={data.css} />
+            <HTMLPreview html={data.html_example} css={data.css} {...(data.js && { js: data.js })} />
           </div>
           <Footer/>
         </div>

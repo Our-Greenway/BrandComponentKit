@@ -195,6 +195,9 @@ function Brand() {
             <strong className="text-black">Download this font on Google Fonts</strong>
             </a>
             </h3>
+
+
+          <h2 className="pt-4 text-2xl text-gray-900">DM Sans</h2>
 </div>
 <div className="space-y-2">
             <h2 className="text-3xl font-bold text-gray-900 ">Brand Guidelines</h2>

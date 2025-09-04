@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const HTMLPreview = ({ html, css }: { html: string; css: string }) => {
+const HTMLPreview = ({ html, css, js }: { html: string; css: string; js?: string }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
@@ -36,6 +36,14 @@ const HTMLPreview = ({ html, css }: { html: string; css: string }) => {
           </head>
           <body>
             <div id="root">${html}</div>
+
+              ${js ? `<script>
+              try {
+                ${js}
+              } catch (error) {
+                console.error('JavaScript execution error:', error);
+              }
+            </script>` : ''}
           </body>
         </html>
       `;

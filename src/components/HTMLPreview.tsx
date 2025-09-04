@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import HTMLRender from "../utils/HTMLRender";
 
-const ResizablePreview: React.FC<{ html: string; css: string }> = ({ html, css }) => {
+const ResizablePreview: React.FC<{ html: string; css: string; js?:string }> = ({ html, css, js }) => {
   const [dimensions, setDimensions] = useState({ width: 800, height: 400 });
   const [isDragging, setIsDragging] = useState(false);
   const [resizeDirection, setResizeDirection] = useState<"x" | "y" | null>(null);
@@ -74,7 +74,7 @@ const ResizablePreview: React.FC<{ html: string; css: string }> = ({ html, css }
       }`}
       style={{ width: dimensions.width, height: dimensions.height }}
     >
-      <HTMLRender html={html} css={css} />
+      <HTMLRender html={html} css={css} {...(js && { js })} />
 
       {/* Horizontal resize handle */}
       <div
