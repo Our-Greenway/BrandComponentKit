@@ -40,7 +40,7 @@ function FlightPath() {
       <div className="space-y-6 w-screen sm:w-auto pl-5 pr-5 break-words whitespace-normal">
         <div className="space-y-2 ">
           <h2 className="text-3xl font-bold text-gray-900">FlightPath Downsview</h2>
-          <p className="text-gray-600">FlightPath Downsview is a TypeScript React tool designed to help people who are hearing impaired learn more about Downsview Park during Cycling Without Age rides (the “Navigator” feature). It also includes a “Pathfinder” tool to guide users along the shortest routes between park attractions.</p>
+          <p className="text-gray-600">FlightPath Downsview is a TypeScript React tool designed to help people who are deaf and hard of hearing learn more about Downsview Park during Cycling Without Age rides (the “Navigator” feature). It also includes a “Pathfinder” tool to guide users along the shortest routes between park attractions.</p>
           <h3 className="pt-2">
             <a href="https://flightpath.ourgreenway.ca/" className="bg-gray-300 hover:bg-gray-400 text-lg font-medium px-6 py-2 rounded transition">
             <strong className="text-black">Go to the website</strong>
