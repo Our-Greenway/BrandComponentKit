@@ -11,10 +11,7 @@ body{
   body{
     background: #fcfcfc;
   }
-  tr, th{ 
-    color: #f7fafc;
-  }
-  p, li, ul, i {
+  p, li, ul, i, tr, th {
     color: #213547;
   }
 }
