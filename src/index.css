@@ -14,7 +14,7 @@ body{
   tr, th{ 
     color: #f7fafc;
   }
-  p, li, ul {
+  p, li, ul, i {
     color: #213547;
   }
 }
