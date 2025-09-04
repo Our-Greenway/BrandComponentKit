@@ -11,6 +11,9 @@ body{
   body{
     background: #fcfcfc;
   }
+  tr, th{ 
+    color: #f7fafc;
+  }
   p, li, ul {
     color: #213547;
   }
