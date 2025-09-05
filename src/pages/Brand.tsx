@@ -3,9 +3,16 @@ import Topbar from '../components/Topbar'
 import { useState } from "react";
 import ColourCard from "../components/ColourBlock";
 import Footer from "../components/Footer";
+import CodeBlock from '../components/CodeBlock';
 
 function Brand() {
     const [hovered, setHovered] = useState<string | null>(null);
+    const darkMode = `@media (prefers-color-scheme: dark) {
+      styles here..
+    } `
+    const mobileMode = `@media (max-width: 768px) {
+      styles here..
+    } `
   
     return (
 <div className="w-full"> 
@@ -23,6 +30,9 @@ function Brand() {
           <h2 className="text-2xl text-gray-900">Rooted in History, Riding Toward Tomorrow</h2>
           <p>The new visual identity introduced in 2025 reflects the program's development since 2018. Since then, the organization has grown exponentially from a research lab in a university to over 10+ research briefs, 1000+ Cycling Without Age rides in Downsview Park, and connecting over 20+ communities with its Cargo Bike Showcase.</p>       
           <p>This brand aims to be more visually accessible on the web while honouring Downsview's historic place as an aviation powerhouse; the key message being to support and build a more mobility and eco-friendly Northwestern Toronto. </p>
+          <br/>
+          <img src="LogoDrafts.svg"></img>
+            <i><strong>Image:</strong> graphic showing older drafts when creating the logomark.</i>
         </div>
         
         <div className="space-y-2">
@@ -196,9 +206,17 @@ function Brand() {
             </a>
             </h3>
 
-
-          <h2 className="pt-4 text-2xl text-gray-900">DM Sans</h2>
+            
 </div>
+
+<div className="space-y-2">
+<h2 className="text-3xl font-bold text-gray-900 ">Website Nationbuilder Breakpoints</h2>
+          <p>The following breakpoints should be used for dark mode styles </p>
+          <CodeBlock code={darkMode} language="CSS" />
+
+          <p>The following breakpoints should be used for mobile styles </p>
+          <CodeBlock code={mobileMode} language="CSS" />
+          </div> 
 <div className="space-y-2">
             <h2 className="text-3xl font-bold text-gray-900 ">Brand Guidelines</h2>
           <h2 className="text-2xl text-gray-900">Logo spacing</h2>
