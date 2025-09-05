@@ -45,6 +45,11 @@ function Sidebar() {
       Assets
     </div>
   </Link>
+  <Link to="/maps" className={isActivePath('/maps') ? 'font-bold text-black' : 'text-gray-700'}>
+    <div className={`${isActivePath('/maps') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+      Maps
+    </div>
+  </Link>
 
   <Link to="/flightpath" className={isActivePath('/flightpath') ? 'font-bold text-black' : 'text-gray-700'}>
     <div className={`${isActivePath('/flightpath') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
@@ -55,6 +60,13 @@ function Sidebar() {
   <Link to="/scrape2tex" className={isActivePath('/scrape2tex') ? 'font-bold text-black' : 'text-gray-700 '}>
     <div className={`${isActivePath('/scrape2tex') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
       Scrape2TeX
+    </div>
+  </Link>
+
+
+  <Link to="/report" className={isActivePath('/report') ? 'font-bold text-black' : 'text-gray-700'}>
+    <div className={`${isActivePath('/report') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
+    Heuristic Evaluation and Final Status Report
     </div>
   </Link>
 
@@ -89,6 +101,7 @@ function Sidebar() {
         </div>
       );
     })}
+
     
   </div>
 </div>

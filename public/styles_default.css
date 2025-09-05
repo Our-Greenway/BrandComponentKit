@@ -10,6 +10,8 @@
    letter-spacing: -0.5px;
  }
 
+.form-grid-form{
+    max-width: 50%;
 }
 
 
@@ -6736,8 +6738,8 @@ ul):where(:not([class]))>li:after {
    background-color: var(--emphasis);
    block-size: 1em;
    margin-block-start: .22em;
-   -webkit-mask: url(https: //ka-p.fontawesome.com/releases/v6.7.2/svgs/sharp-solid/arrow-right.svg?token=b311da2d97) 50% no-repeat;
-   mask: url(https: //ka-p.fontawesome.com/releases/v6.7.2/svgs/sharp-solid/arrow-right.svg?token=b311da2d97) 50% no-repeat;
+   -webkit-mask: url(https://ka-p.fontawesome.com/releases/v6.7.2/svgs/sharp-solid/arrow-right.svg?token=b311da2d97) 50% no-repeat;
+   mask: url(https://ka-p.fontawesome.com/releases/v6.7.2/svgs/sharp-solid/arrow-right.svg?token=b311da2d97) 50% no-repeat;
 }
 
 .text-content ol {

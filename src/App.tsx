@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import Nationbuilder from './pages/Nationbuilder'
 import Scrape2TeX from './pages/Scrape2TeX'
 import FlightPath from './pages/Flightpath'
+import Mapping from './pages/Maps'
+import Report from './pages/Report'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <Route path="/nationbuilder" element={<Nationbuilder />} />
       <Route path="/scrape2tex" element={<Scrape2TeX />} />
       <Route path="/flightpath" element={<FlightPath />} />
+      <Route path="/maps" element={<Mapping />} />
+      <Route path="/report" element={<Report />} />
       </Routes>
     </BrowserRouter>
   )
