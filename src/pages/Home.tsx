@@ -18,11 +18,11 @@ function Home() {
           <div className="relative h-[500px]">
             <img src="HomeBanner.jpg" alt="Logo sketches" className="w-full h-full object-cover rounded-xl" />
 
-            <div className="absolute top-10 left-0 sm:left-10 bg-[#3A5F3A] !text-white p-6 rounded-xl max-w-xl">
-              <p className="text-3xl font-semibold">
+            <div className="absolute top-10 left-0 sm:left-10 bg-[#3A5F3A] p-6 rounded-xl max-w-xl">
+              <p className="!text-white text-3xl font-semibold">
                 Guiding the Look, Feel, and Future of
               </p>
-              <p className="text-4xl font-bold mt-1">
+              <p className="!text-white text-4xl font-bold mt-1">
                 Our Greenway
               </p>
             </div>
