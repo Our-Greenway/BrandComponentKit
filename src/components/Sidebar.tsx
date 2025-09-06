@@ -34,7 +34,7 @@ function Sidebar() {
   }
 
   return (
-<div className="pl-6  font-medium text-gray-900">
+<div className="h-65 overflow-y-scroll sm:h-auto sm:overflow-y-visible pl-6  font-medium text-gray-900">
   <Link to="/brand" className={isActivePath('/brand') ? 'font-bold text-black' : 'text-gray-700'}>
     <div className={`${isActivePath('/brand') ? 'font-bold text-black pb-2' : 'text-gray-700 pb-2'}`}>
       Brand

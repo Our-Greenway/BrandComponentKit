@@ -9,7 +9,7 @@ function Home() {
     <Topbar />
     <div className="flex flex-col lg:flex-row gap-10">
         <div className="lg:w-1/4 lg:max-w-[300px] flex-shrink-0">
-        <div className="sticky top-10">
+        <div className="md:sticky md:top-10">
           <Sidebar />
         </div>
       </div>
